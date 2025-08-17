@@ -113,7 +113,7 @@ function PricingCard({ plan, isFirst }) {
       </div>
       {plan.ctaText && (
            <div key={plan.ctaText} className="main-small-box relative cursor-pointer">
-              <div className="md:p-6 p-[16px] opacity-80">
+              <div className=" p-[16px] opacity-80">
                 <h3 className=" text-white text-2xl font-semibold">
                   {plan.ctaText}
                 </h3>

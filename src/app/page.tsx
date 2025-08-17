@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <HeroBG />
-      <div className="-mt-[380px]">
+      {/* <HeroBG /> */}
+      <div >
         <AIConferenceSection />
       </div>
       <Features />
