@@ -1,6 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const pricingPlans = [
+type PricingPlan = {
+  key: string;
+  title: string;
+  price: string;
+  buttonText: string;
+  ctaText?: string;
+  description: string;
+  features: string[];
+};
+
+const pricingPlans: PricingPlan[] = [
   {
     key: 'instant',
     title: 'INSTANT',
@@ -70,7 +80,11 @@ const pricingPlans = [
 ];
 
 // Hexagon menu/feature icon
-function Feature({ text }) {
+interface FeatureProps {
+  text: string;
+}
+
+function Feature({ text }: FeatureProps) {
   return (
     <li className="flex items-center gap-2">
       <span
@@ -86,7 +100,12 @@ function Feature({ text }) {
   );
 }
 
-function PricingCard({ plan, isFirst }) {
+interface PricingCardProps {
+  plan: PricingPlan;
+  isFirst: boolean;
+}
+
+function PricingCard({ plan, isFirst }: PricingCardProps) {
   return (
     <div
       className={`${
@@ -104,7 +123,7 @@ function PricingCard({ plan, isFirst }) {
         <div className="text-white font-lekton text-3xl font-bold mb-3">
           {plan.price}
         </div>
-        <button className=" button-gradient text-white font-lekton font-bold rounded-md py-2 px-6 text-base mb-2 ">
+        <button className="button-gradient text-white font-lekton font-bold rounded-md py-2 px-6 text-base mb-2 ">
           {plan.buttonText}
         </button>
       </div>
@@ -112,15 +131,12 @@ function PricingCard({ plan, isFirst }) {
         <p className="text-white/75 text-base">{plan.description}</p>
       </div>
       {plan.ctaText && (
-           <div key={plan.ctaText} className="main-small-box relative cursor-pointer">
-              <div className=" p-[16px] opacity-80">
-                <h3 className=" text-white text-2xl font-semibold">
-                  {plan.ctaText}
-                </h3>
-              
-                <div className="green-polygon-piece absolute bottom-0 right-0 pointer-events-none" />
-              </div>
-            </div>
+        <div key={plan.ctaText} className="main-small-box relative cursor-pointer">
+          <div className="p-[16px] opacity-80">
+            <h3 className="text-white text-2xl font-semibold">{plan.ctaText}</h3>
+            <div className="green-polygon-piece absolute bottom-0 right-0 pointer-events-none" />
+          </div>
+        </div>
       )}
       <ul className="mt-2 space-y-3">
         {plan.features.map((feature, idx) => (
@@ -155,6 +171,7 @@ export default function Pricing() {
               onClick={() => setIsIndividual(!isIndividual)}
               className="relative w-[51px] h-[31px] rounded-full bg-gray-700 border border-gray-400 transition-all duration-300"
               aria-label="Toggle Individual or Team"
+              type="button"
             >
               <div
                 className={`absolute top-0.5 w-7 h-7 bg-white rounded-full shadow transition-transform duration-300 ${
