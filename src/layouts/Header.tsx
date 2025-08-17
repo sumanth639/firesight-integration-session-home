@@ -414,7 +414,7 @@ export function Header({ scrolled = false }) {
 
               <div className="flex items-center my-8">
                 <div className="text-white text-sm font-light tracking-wider">
-                  D'VINCI - WORK LESS
+                  D&apos;VINCI - WORK LESS
                 </div>
               </div>
             </div>
