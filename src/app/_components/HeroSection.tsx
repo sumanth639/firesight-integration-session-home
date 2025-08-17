@@ -33,22 +33,24 @@ export default function SessionPage() {
       </div>
 
       <div
-        style={{
-          background: 'url("/images/sessions2.png")',
-          backgroundRepeat: 'no-repeat',
-          width: "72.57vw",
-          height: "40.7vw",
-        }}
-        className="hidden md:block mt-20"
-      >
-        <div
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(8, 11, 22, 0.00) 31.41%, rgba(8, 11, 22, 0.93) 80.91%, #080B16 100%)",
-           
-          }}
-        ></div>
-      </div>
+  style={{
+    background: 'url("/images/sessions2.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',  // <-- Add this line
+    margin: "0 auto",              // <-- Add this line
+    width: "72.57vw",
+    height: "40.7vw",
+  }}
+  className="hidden md:block mt-20"
+>
+  <div
+    style={{
+      background:
+        "linear-gradient(180deg, rgba(8, 11, 22, 0.00) 31.41%, rgba(8, 11, 22, 0.93) 80.91%, #080B16 100%)",
+    }}
+  ></div>
+</div>
+
 
       <div
         style={{
