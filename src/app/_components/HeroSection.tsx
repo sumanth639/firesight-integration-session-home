@@ -34,10 +34,10 @@ export default function SessionPage() {
 
       <div
         style={{
-          background: 'url("/images/sessions.svg")',
-          backgroundSize: "cover",
+          background: 'url("/images/sessions2.png")',
+          backgroundRepeat: 'no-repeat',
           width: "72.57vw",
-          height: "60.14vw",
+          height: "40.7vw",
         }}
         className="hidden md:block mt-20"
       >
@@ -45,8 +45,7 @@ export default function SessionPage() {
           style={{
             background:
               "linear-gradient(180deg, rgba(8, 11, 22, 0.00) 31.41%, rgba(8, 11, 22, 0.93) 80.91%, #080B16 100%)",
-            width: "100%",
-            height: "100%",
+           
           }}
         ></div>
       </div>
