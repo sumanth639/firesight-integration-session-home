@@ -86,7 +86,7 @@ export default function PlatformSection() {
               delivers an all-in-one tool to streamline tasks, manage
               projects, and access actionable insights. With seamless
               integration of personal data, apps, and workflows, the
-              platform's Unified Dashboard serves as the command center,
+              platform&apos;s Unified Dashboard serves as the command center,
               bringing everything you need into one intuitive space
             </p>
             <Button

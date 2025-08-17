@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-// Add the CSS styles
 const headerStyles = `
   .nav-item {
     color: #86878d;
@@ -38,8 +39,6 @@ const headerStyles = `
     z-index: 1000;
   }
 
-
-
   .footer-box {
     background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(32px);
@@ -51,7 +50,7 @@ const headerStyles = `
   }
 `;
 
-export function Header({ scrolled = false }: { scrolled: boolean }) {
+export function Header({ scrolled = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -85,22 +84,24 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
           <nav className="hidden md:flex flex-auto items-center justify-between font-medium !text-[18px] w-full">
             {/* Left-aligned items and dropdown */}
             <div className="flex items-center relative space-x-16">
-              <a href="/" className="flex items-center">
-                <img
+              <Link href="/" className="flex items-center">
+                <Image
                   src="/images/logo.svg"
                   alt="Logo"
                   width={140}
                   height={36}
                   className="sm:w-[140px] sm:h-[36px] w-[90px] h-[24px]"
+                  priority
                 />
-              </a>
+              </Link>
               <div className="relative">
                 <button
                   className="px-2 text-white !text-[18px] !bg-transparent hover:text-white flex items-center"
                   onClick={() => setMenuOpen(!menuOpen)}
+                  type="button"
                 >
                   <div className="flex items-center">
-                    <img
+                    <Image
                       src="/images/GreenBlurPolygon.svg"
                       alt="Session"
                       width={116}
@@ -108,7 +109,7 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
                       className="inline mx-[-40px]"
                     />
                     <span className="mr-2">FIRESIGHT | SESSIONS</span>
-                    <img
+                    <Image
                       src={
                         menuOpen
                           ? '/images/icons/uparrow.png'
@@ -131,8 +132,9 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
                       <button
                         onClick={() => setMenuOpen(false)}
                         className="p-0 bg-transparent"
+                        type="button"
                       >
-                        <img
+                        <Image
                           src="/images/mobile/menu-close.svg"
                           alt="Close"
                           width={24}
@@ -142,47 +144,56 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
                       </button>
                     </div>
                     <div className="flex flex-col px-1">
-                      <a
+                      <Link
                         href="/pulse/overview"
+                        className=""
                         onClick={() => setMenuOpen(false)}
                       >
                         <div className="flex items-center justify-start h-[52px]">
-                          <img
+                          <Image
                             src="/images/BlueBlurPolygon.svg"
-                            alt=" "
+                            alt=""
                             width={116}
                             height={116}
                             className="mx-[-33px] my-[-48px]"
                           />
                           FIRESIGHT | PULSE
                         </div>
-                      </a>
+                      </Link>
                       <div className="flex items-center justify-start h-[52px]">
-                        <img
+                        <Image
                           src="/images/GreenBlurPolygon.svg"
-                          alt=" "
+                          alt=""
                           width={116}
                           height={116}
                           className="mx-[-33px] my-[-48px]"
                         />
-                        <a href="/session" onClick={() => setMenuOpen(false)}>
+                        <Link
+                          href="/session"
+                          className=""
+                          onClick={() => setMenuOpen(false)}
+                        >
                           FIRESIGHT | SESSIONS{' '}
                           <small>
                             <i>(Coming Soon)</i>
                           </small>
-                        </a>
+                        </Link>
                       </div>
                       <div className="flex items-center justify-start h-[52px]">
-                        <img
+                        <Image
                           src="/images/PinkBlurPolygon.svg"
-                          alt=" "
+                          alt=""
                           width={116}
                           height={116}
                           className="mx-[-33px] my-[-48px]"
                         />
-                        <a href="/platform" onClick={() => setMenuOpen(false)}>
+                        <Link
+                          href="/platform"
+                          className=""
+                          onClick={() => setMenuOpen(false)}
+                        >
                           FIRESIGHT | PLATFORM <small>(Coming Soon)</small>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -192,48 +203,50 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
 
             {/* Centered button with flexible space */}
             <div className="flex-grow flex justify-center">
-              <button className='button-gradient py-2 px-8'>
-                <a href="/session/start-session" className="start-session-btn">
+              <button className="button-gradient py-2 px-8" type="button">
+                <Link href="/session/start-session" className="start-session-btn">
                   Start Session Now
-                </a>
+                </Link>
               </button>
             </div>
 
             {/* Right-aligned items */}
             <div className="flex items-center">
-              <a href="/about-us" className="nav-item lg:block hidden">
-                <img
+              <Link href="/about-us" className="nav-item lg:block hidden">
+                <Image
                   className="mr-4 hidden"
                   src="/images/PurplePolygon.svg"
-                  alt=" "
+                  alt=""
                   width={24}
                   height={24}
                 />
                 ABOUT US
-              </a>
-              <a href="/ai-impact" className="nav-item">
-                <img
+              </Link>
+              <Link href="/ai-impact" className="nav-item">
+                <Image
                   className="mr-4 hidden"
                   src="/images/PurplePolygon.svg"
-                  alt=" "
+                  alt=""
                   width={24}
                   height={24}
                 />
                 AI IMPACT INDEX
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://blog.firesight.ai/"
                 className="nav-item lg:block hidden"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img
+                <Image
                   className="mr-4 hidden"
                   src="/images/PurplePolygon.svg"
-                  alt=" "
+                  alt=""
                   width={24}
                   height={24}
                 />
                 BLOG
-              </a>
+              </Link>
             </div>
           </nav>
 
@@ -242,8 +255,9 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
             className="md:hidden block ml-auto w-6 h-6"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Open menu"
+            type="button"
           >
-            <img
+            <Image
               src="/images/mobile/Menu.svg"
               alt="Menu"
               width={24}
@@ -259,8 +273,9 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-0 bg-transparent"
+                type="button"
               >
-                <img
+                <Image
                   src="/images/mobile/menu-close.svg"
                   alt="Close"
                   width={24}
@@ -279,35 +294,37 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
                       PULSE
                     </span>
                   </div>
-                  <a href="/pulse/overview" className="hover:underline">
+                  <Link href="/pulse/overview" className="hover:underline">
                     Overview
-                  </a>
-                  <a href="/pulse/platform" className="hover:underline">
+                  </Link>
+                  <Link href="/pulse/platform" className="hover:underline">
                     Platform
-                  </a>
-                  <a href="/pulse/pricing" className="hover:underline">
+                  </Link>
+                  <Link href="/pulse/pricing" className="hover:underline">
                     Pricing
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="w-px h-24 bg-white/10"></div>
 
                 <div className="flex flex-col flex-1 items-center space-y-3">
-                  <a href="/ai-impact" className="hover:underline">
+                  <Link href="/ai-impact" className="hover:underline">
                     AI Impact Index
-                  </a>
-                  <a href="/" className="hover:underline">
+                  </Link>
+                  <Link href="/" className="hover:underline">
                     Home
-                  </a>
-                  <a href="/about-us" className="hover:underline">
+                  </Link>
+                  <Link href="/about-us" className="hover:underline">
                     About Us
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://blog.firesight.ai/"
                     className="hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Blog
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -320,9 +337,9 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
                     Firesight |
                     <span className="ml-2 text-red-400">PLATFORM</span>
                   </div>
-                  <a href="/platform/about" className="hover:underline">
+                  <Link href="/platform/about" className="hover:underline">
                     About
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="w-px h-12 bg-white/10"></div>
@@ -334,9 +351,9 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
                       SESSIONS
                     </span>
                   </div>
-                  <a href="/sessions/about" className="hover:underline">
+                  <Link href="/sessions/about" className="hover:underline">
                     About
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -356,29 +373,41 @@ export function Header({ scrolled = false }: { scrolled: boolean }) {
 
               {/* Social Icons */}
               <div className="flex gap-2 py-6">
-                <a
+                <Link
                   href="https://www.linkedin.com/company/firesightai/about/?viewAsMember=true"
                   aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
                     <span className="text-white text-xs">in</span>
                   </div>
-                </a>
-                <a href="/" aria-label="CB">
+                </Link>
+                <Link href="/" aria-label="CB">
                   <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
                     <span className="text-white text-xs">CB</span>
                   </div>
-                </a>
-                <a href="https://twitter.com/FiresightAi/" aria-label="Twitter">
+                </Link>
+                <Link
+                  href="https://twitter.com/FiresightAi/"
+                  aria-label="Twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <div className="w-8 h-8 bg-black rounded flex items-center justify-center border border-white">
                     <span className="text-white text-xs">X</span>
                   </div>
-                </a>
-                <a href="https://www.discord.com/" aria-label="Discord">
+                </Link>
+                <Link
+                  href="https://www.discord.com/"
+                  aria-label="Discord"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center">
                     <span className="text-white text-xs">D</span>
                   </div>
-                </a>
+                </Link>
               </div>
 
               <div className="w-full h-px bg-white/10"></div>

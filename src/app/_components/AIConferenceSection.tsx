@@ -44,7 +44,7 @@ export default function AIConferenceSection() {
                 automatically saved to your library, making them easy to search,
                 reference, or export (manually or by AI Agents), forming a
                <b> continuously growing, AI-powered knowledge base.</b> Never lose
-                track of the "why" behind decisions, nor waste time digging for
+                track of the &quot;why&quot; behind decisions, nor waste time digging for
                 meeting notes. Extract more value from calls and <b>build momentum,
                 not memory gaps.</b>
               </p>

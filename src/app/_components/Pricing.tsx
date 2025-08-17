@@ -175,7 +175,7 @@ export default function Pricing() {
             </span>
             <br />
             <span className="font-normal">
-              Sessions isn't just for meetings – it's for motion. Built for solo
+              Sessions isn&apos;t just for meetings – it&apos;s for motion. Built for solo
               knowledge workers navigating complexity alone, Sessions transforms
               every call into progress.
               <span className="font-bold">
