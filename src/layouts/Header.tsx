@@ -53,12 +53,12 @@ const headerStyles = `
 export function Header({ scrolled = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && event.target instanceof Node && !menuRef.current.contains(event.target)) {
         setMenuOpen(false);
       }
     }
@@ -204,7 +204,10 @@ export function Header({ scrolled = false }) {
             {/* Centered button with flexible space */}
             <div className="flex-grow flex justify-center">
               <button className="button-gradient py-2 px-8" type="button">
-                <Link href="/session/start-session" className="start-session-btn">
+                <Link
+                  href="/session/start-session"
+                  className="start-session-btn"
+                >
                   Start Session Now
                 </Link>
               </button>

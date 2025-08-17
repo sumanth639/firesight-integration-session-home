@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import {
   LiveKitRoom,
   VideoConference,
@@ -11,15 +12,25 @@ import {
 import { Track } from 'livekit-client';
 import '@livekit/components-styles';
 
+interface EmojiData {
+  emoji: string;
+  timestamp: number;
+  username: string;
+}
+
 interface CustomVideoTilesProps {
   serverUrl: string;
   token: string;
+  activeEmojis: { [key: string]: EmojiData };
 }
 
 export default function CustomVideoTiles({
   serverUrl,
   token,
+  activeEmojis,
 }: CustomVideoTilesProps) {
+  console.log(activeEmojis);
+  
   return (
     <LiveKitRoom
       token={token}
@@ -28,15 +39,21 @@ export default function CustomVideoTiles({
       className="w-full h-[70vh] rounded-lg overflow-hidden bg-gray-900"
       data-lk-theme="default"
     >
-      {/* Move useTracks inside the Room context */}
-      <VideoRoomContent />
+      <VideoRoomContent activeEmojis={activeEmojis} />
     </LiveKitRoom>
   );
 }
 
-// This component is rendered inside the LiveKitRoom context
-function VideoRoomContent() {
+interface VideoRoomContentProps {
+  activeEmojis: { [key: string]: EmojiData };
+}
+
+function VideoRoomContent({ activeEmojis }: VideoRoomContentProps) {
   const tracks = useTracks([Track.Source.Camera, Track.Source.ScreenShare]);
+
+  // You can use activeEmojis here if needed, for example:
+  console.log(activeEmojis);
+
   return (
     <VideoConference>
       <GridLayout tracks={tracks}>
